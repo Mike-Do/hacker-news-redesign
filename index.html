@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Hacker News Redesign</title>
+
+  <!-- Favicons -->
+  <!-- CITATION: Taken from the Official Hacker News website -->
+  <link href="favicon.ico" rel="icon">
+
+  <!-- Font -->
+  <!-- CITATION: Font from https://fonts.google.com/specimen/Inter?vfquery=INter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+  
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Index CSS File -->
+  <link href="index.css" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+  <!-- CITATION: clickable links from https://stackoverflow.com/questions/17147821/how-to-make-a-whole-row-in-a-table-clickable-as-a-link -->
+  <script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+    });
+  </script>
+  <!-- This is a Hacker News redesign -->
+  <nav class="navbar navbar-expand-lg navbar-dark mat-dark border-bottom border-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <!-- Y Combinator Icon from Font Awesome -->
+        <i class="fab fa-y-combinator yc-color"></i>
+        <b>Hacker News</b>
+      </a>
+
+        <!-- Desktop Search Bar -->
+        <div class="col-sm-3 col-md-3 pull-right d-none d-lg-block">
+          <form class="navbar-form" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control search-bg border-secondary" placeholder="Search" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <!-- on submit -->
+                <button class="btn yc-btn" type="submit"><i class="fas fa-search search-btn"></i></button>
+              </div>w
+            </div>
+          </form>
+        </div>
+
+        <!-- Tablet and Mobile Search Icon -->
+        <!-- make the button float next to login button -->
+        <div class="col-sm-4 col-md-4 pull-right d-lg-none">
+            <form class="navbar-form" role="search">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <!-- Lists link, styled like more link -->
+                  <button class="btn yc-btn" type="submit"><i style="color: white;"
+                    class="fa-solid fa-list"></i></button>
+                  <button class="btn yc-btn" type="submit"><i class="fas fa-search search-btn"></i></button>
+                  <button type="button" class="btn btn-dark yc-btn">Login</button>
+                </div>
+              </div>
+            </form>
+          
+        </div>
+     
+        <button type="button" class="btn btn-dark yc-btn d-none d-lg-block">Login</button>
+    </div>
+  </nav>
+
+  <!-- 3 columns, make the middle column 6 columns and a feed, make a job card on the left and list card on the right, on smaller screens, the job and list card stack -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Create a list group, the title is Job >, its description. Then, every element is a Job listing with Job Title, job Desc, then the link to the Job on the same row as the title float right -->
+      <div class="col-sm-12 col-md-3 col-lg-3 mt-3 order-3 order-sm-3 order-md-1 order-lg-1">
+        <div class="card text-white mat-dark">
+          <div class="card-body">
+            <a href="https://news.ycombinator.com/jobs" style="text-decoration: none; color: white;">
+              <h5 class="card-title board-title">Jobs<i class="fas fa-chevron-right"></i></h5>
+            </a>
+            <p class="card-text desc">Jobs at YC Startups.</p>
+          </div>
+            <ul class="list-group list-group-flush border-secondary list-group-hover mat-dark text-white">
+              <li data-href='https://www.ycombinator.com/companies/firezone/jobs/y97q8A0-founding-engineer' class="list-group mat-dark text-white list-group-item clickable-row">
+                <!-- Create a row where Title is Left and Link floats right -->
+                <div class="row">
+                  <div class="col-8 col-sm-9 col-md-8 col-lg-7">
+                    <h6 class="card-text mb-0"><b>Founding Engineer</b></h6>
+                    <p class="card-text">Firezone | YC W22</p>
+                  </div>
+                  <div class="col-4 col-sm-3 col-md-4 col-lg-5">
+                    <a href="#" class="card-link d-sm-block d-md-none d-lg-block">ycombinator.com</a>
+                  </div>
+              </li>
+              <li data-href='https://jobs.lever.co/buildzoom' class="list-group mat-dark text-white list-group-item clickable-row">
+                <!-- Create a row where Title is Left and Link floats right -->
+                <div class="row">
+                  <div class="col-8 col-sm-9 col-md-8 col-lg-7">
+                    <h6 class="card-text mb-0"><b>Product Manager</b></h6>
+                    <p class="card-text">BuildZoom | YC W13</p>
+                  </div>
+                  <div class="col-4 col-sm-3 col-md-4 col-lg-5">
+                    <a href="#" class="card-link d-sm-block d-md-none d-lg-block">lever.co</a>
+                  </div>
+              </li>
+              <li data-href='https://www.ycombinator.com/companies/promoted/jobs/8f7rQXj-staff-machine-learning-engineer' class="list-group mat-dark text-white list-group-item clickable-row">
+                <!-- Create a row where Title is Left and Link floats right -->
+                <div class="row">
+                  <div class="col-8 col-sm-9 col-md-8 col-lg-7">
+                    <h6 class="card-text mb-0"><b>Staff ML Engineer</b></h6>
+                    <p class="card-text">Promoted.ai | YC W21</p>
+                  </div>
+                  <div class="col-4 col-sm-3 col-md-4 col-lg-5">
+                    <a href="#" class="card-link d-sm-block d-md-none d-lg-block">ycombinator.com</a>
+                  </div>
+              </li>
+              <li data-href='https://www.ycombinator.com/companies/promoted/jobs/8f7rQXj-staff-machine-learning-engineer' class="list-group mat-dark text-white list-group-item clickable-row">
+                <!-- Create a row where Title is Left and Link floats right -->
+                <div class="row">
+                  <div class="col-8 col-sm-9 col-md-8 col-lg-7">
+                    <h6 class="card-text mb-0"><b>Software Engineer</b></h6>
+                    <p class="card-text">Svix | YC W21</p>
+                  </div>
+                  <div class="col-4 col-sm-3 col-md-4 col-lg-5">
+                    <a href="#" class="card-link d-sm-block d-md-none d-lg-block">svix.com</a>
+                  </div>
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="https://news.ycombinator.com/jobs" class="card-link more-link">More<i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-9 col-lg-6 mt-3 order-1 order-sm-1 order-md-2 order-ld-2">
+        <div class="d-flex justify-content-between">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-secondary active">Top</button>
+            <button type="button" class="btn mat-dark text-white btn-outline-secondary">Newest</button>
+            <button type="button" class="btn mat-dark text-white btn-outline-secondary">Past</button>
+          </div>
+          <button type="button" class="btn btn-secondary btn-dark yc-btn">
+            <i class="fa-solid fa-pen-to-square"></i> 
+            New Submission
+          </button>
+        </div>
+          
+        <!-- Adapted from https://mdbootstrap.com/docs/standard/extended/news-feed/# -->
+
+        <!--Table-->
+        <div class="card text-white mat-dark mt-4">
+        <table class="table-responsive ">
+        </table>
+        <table class="table table-forum text-center border-secondary">
+          <tbody>
+            <!-- Feed is a colleciton of cards with 4 td, the first td is the rank number, the second td is the upvote icon with the number of upvotes, the third td is the title of the post, link, and description, the fourth td is a button with a comment icon -->
+
+            <!-- make tr clickable -->
+            <tr class="submission clickable-row" data-href='https://driftingin.space/posts/plane'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>321</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Plane: Per-user backends for web apps
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    drifitingin.space
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By paulgb 5 hours ago | 72 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33178797" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://tigerbeetle.com/blog/a-database-without-dynamic-memory/'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>359</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  A database without dynamic memory allocation
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    tigerbeetle.com
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By todsacerdoti 7 hours ago | 185 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33192288" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://blog.gitguardian.com/toyota-accidently-exposed-a-secret-key-publicly-on-github-for-five-years/'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>587</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Toyota suffered a data breach by accidentally exposing a secret key on GitHub
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    gitguardian.com
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By whack 11 hours ago | 253 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33196146" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://obsidian.md/1.0'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>1324</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Obsidian 1.0 - Personal knowledge base app
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    obsidian.md
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By ericax 6 hours ago | 561 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33190433" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://www.quantamagazine.org/teenager-solves-stubborn-riddle-about-prime-number-look-alikes-20221013/'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>387</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Teenager solves stubborn riddle about prime number look-alikes
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    quantamagazine.org
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By theafh 3 hours ago | 248 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33192074" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://www.getlago.com/blog/is-stripe-using-stripe'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>336</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Why doesn't Stripe use Stripe Billing?
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    getlago.com
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By swyx 5 hours ago | 186 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33191307" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://github.com/viperproject/prusti-dev'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>284</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Prusti: Static Analyzer for Rust
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    github.com/viperproject
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By aviramha 2 hours ago | 90 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33190973" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://berk.es/2022/09/06/frameworks-harm-maintenance/'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>475</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Using a framework will harm the maintenance of your software
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    berk.es
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By excerionsforte 6 hours ago | 528 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33185010" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://metrist.io/blog/how-we-found-azures-unannounced-breaking-change/'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>187</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  Discovering Azure's unannounced breaking change with Cosmos DB
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    metrist.io
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By jmartens 1 hour ago | 108 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33194974" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr class="submission clickable-row" data-href='https://www.scottaaronson.com/democritus/lec9.html'>
+              <td scope="row" class="text-nowrap upvote">
+                <!-- make an Up arrow large and gray, then the value right below it, centered -->
+                <!-- make icon larger -->
+                <i class="fas fa-arrow-up fa-2x"></i>
+                <h5>109</h5>
+              </td>
+              </td>
+              <td class="text-start">
+                <h4 href="#" class="text-white font-weight-bold mb-0">
+                  PHYS771 Lecture 9: Quantum (2007) 
+                </h4>
+                <div class="mt-0">
+                  <a href="#" class="blue-text">
+                    scottaaronson.com
+                  </a>
+                </div>
+                <div class="my-1">
+                  <p class="text-secondary">By thunderbong 10 hours ago | 51 comments</p>
+                  <div></div>
+                </div>
+              </td>
+              <td>
+                <a href="https://news.ycombinator.com/item?id=33188276" class="btn ">
+                  <button type="button" class="btn yc-btn"><i style="color: white;" class="fas fa-message ml-1"></i></button>
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border-bottom: none;" 
+              colspan="3">
+                <a href="https://news.ycombinator.com/front?day=2022-10-13" class="card-link more-link">More<i class="fas fa-chevron-right"></i></a>
+              </td>
+            </tr>
+          </tbody>          
+        </table>
+        </div>
+      </div>
+
+
+      <!-- 3 Columns Card with Lists Title, each entry is an Image Followed by a title and description that highlights on hover, and then a "More" link -->
+      <div class="col-sm-12 col-md-3 col-lg-3 mt-3 order-sm-1 order-2 order-sm-2 order-md-3 order-lg-3 d-md-none d-lg-block d-sm-block
+      ">
+        <div class="card text-white mat-dark">
+          <div class="card-body">
+            <a href="https://news.ycombinator.com/lists" style="text-decoration: none; color: white;">
+              <h5 class="card-title board-title
+            ">Lists<i class="fas fa-chevron-right"></i></h5>
+            </a>
+            
+            <p class="card-text desc">Communities on Hacker News.</p>
+          </div>
+            <ul class="list-group list-group-flush list-group-hover border-secondary">
+              <li data-href='https://news.ycombinator.com/ask' class="list-group mat-dark text-white clickable-row
+              list-group-item">
+                <div class="row">
+                  <!-- center items -->
+                  <div class="col-2 col-sm-2 col-md-4 col-lg-2">
+                    <!-- CITATION: Image from https://www.flaticon.com/free-icon/question_3772082?related_id=3772082&origin=tag -->
+                    <img src="question.png" class="mr-0" style="width: 50px; height: 50px;">
+                  </div>
+                  <div class="col-10 col-sm-10 col-md-6 col-lg-8">
+                    <h5 class="card-text mb-0">AskHN</h5>
+                    <p class="card-text desc">The latest AskHN posts</p>
+                  </div>
+                </div>
+              </li>
+              <li data-href='https://news.ycombinator.com/show' class="list-group mat-dark text-white clickable-row
+              list-group-item">
+                <div class="row">
+                  <!-- CITATION: Image from https://www.flaticon.com/free-icons/treasure%22 -->
+                  <div class="col-2 col-sm-2 col-md-4 col-lg-2">
+                    <img src="treasure-chest.png" class="mr-0" style="width: 50px; height: 50px;">
+                  </div>
+                  <div class="col-10 col-sm-10 col-md-6 col-lg-8">
+                    <h5 class="card-text mb-0">ShowHN</h5>
+                    <p class="card-text desc">The latest ShowHN posts</p>
+                  </div>
+                </div>
+              </li>
+              <li data-href='https://news.ycombinator.com/bestcomments' class="list-group mat-dark text-white clickable-row
+              list-group-item">
+                <div class="row">
+                  <div class="col-2 col-sm-2 col-md-4 col-lg-2">
+                    <!-- CITATION: Image from https://www.flaticon.com/free-icons/dialogue -->
+                    <img src="chat.png" class="mr-0" style="width: 50px; height: 50px;">
+                  </div>
+                  <div class="col-10 col-sm-10 col-md-6 col-lg-8">
+                    <h5 class="card-text mb-0">Best Comments</h5>
+                    <p class="card-text desc">Highest-voted recent comments</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="https://news.ycombinator.com/lists" class="card-link more-link">More<i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- CITATION: Adapted from Personas Assignment -->
+    <!-- Create a footer with two columns: Apply to YC and a Button, then Text for Misc Links -->
+    <footer class="footer footer-bg text-white mat-dark custom-footer mt-5 border-top border-secondary">
+      <div class="container">
+        <div class="row">
+          <!-- Apply to YC and a Button, then Text "Guidelines | FAQ | API | Security | Legal | Contact Us" -->
+          <!-- center on sm screens -->
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-md-left text-lg-left text-center
+          ">
+            <!-- put h5 and button on same row next to each other -->
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-start
+            "> 
+              <h5 class="apply">Apply to YC Winter 2023</h5>
+              <button type="button" class="btn btn-dark yc-btn">Apply</button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-md-left text-lg-left text-center">
+            <p class="text-secondary">
+              <!-- make each clickable without decoration and text white -->
+              <a class="text-secondary" href="https://news.ycombinator.com/newsguidelines.html">Guidelines</a> |
+              <a class="text-secondary" href="https://news.ycombinator.com/newsfaq.html">FAQ</a> |
+              <a class="text-secondary" href="https://github.com/HackerNews/API">API</a> |
+              <a class="text-secondary" href="https://news.ycombinator.com/security.html">Security</a> |
+              <a class="text-secondary" href="https://www.ycombinator.com/legal/">Legal</a> |
+              <a class="text-secondary" href="mailto:hn@ycombinator.com">Contact Us</a>
+            </p>
+        </div>
+      </div>
+  </footer>
+
+   
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
+

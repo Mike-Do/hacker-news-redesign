@@ -1,0 +1,177 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #030303;
+  }
+
+::selection {
+    /* Change highlight background color to black */
+    background: #F26622;
+    /* change background opacity to 59% */
+    opacity: 0.59;
+    /* Change highlight text color to red */
+    color: #f5f5f5;
+}
+
+/* Media queries for Desktop, Tablet, Mobile to make text preserve ratios */
+/* @media (min-width: 1024px) {
+  body {
+    font-size: 1.5rem;
+  }
+} */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: .75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+/* board-title highlights orange and enlarges on hover */
+.board-title {
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+.board-title:hover {
+    color: #FF5300;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    /* make cursor */
+    cursor: pointer;
+}
+
+/* submission hover 343435 */
+.submission:hover {
+    background-color: #343435;
+    transition: all 0.3s ease-in-out;
+    /* make cursor */
+    cursor: pointer;
+}
+
+.upvote {
+    color: #A19D9D;
+}
+
+/* Turn orange on hover */
+.upvote:hover {
+    color: #F26622;
+    cursor: pointer;
+}
+
+.job-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.job-desc {
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.desc {
+    /* make small */
+    font-size: 0.75rem;
+}
+
+.list-group-hover .list-group-item:hover {
+    background-color: #343435;
+    cursor: pointer;
+    /* add small border of gray */
+    border: 1px solid #343435;
+}
+
+.job-link {
+    font-size: .85rem;
+    /* on tablets, make smaller */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 3px;
+    }
+    font-weight: 400;
+    margin-top: 0;
+}
+
+/* Make the feed the start of the flex row on small screens */
+.feed {
+    @media (max-width: 50px) {
+        order: 1;
+    }
+}
+
+.yc-color {
+    color: #F26622;
+}
+
+.mat-dark {
+    background-color: #1A1A1B;
+}
+
+
+.search-bg {
+    color: #8D8D8D;
+    background-color: #272729;    
+}
+
+.search-bg:focus {
+    color: white;
+    background-color: #272729;
+}
+
+.yc-bg {
+    background-color: #F26622;
+}
+
+.search-btn {
+    color: white;
+}
+
+.yc-btn {
+    background-color: #F26622
+}
+
+/* On Hover Make it FB864D */
+.yc-btn:hover {
+    background-color: #FB864D;
+}
+
+.comment-btn {
+    background-color: #FB864D;
+}
+
+.comment-btn:hover {
+    background-color: #F26622;
+}
+
+.more-link {
+    color: #A19D9D;
+    /* get rid of anchor tag unerline */
+    text-decoration: none;
+}
+
+/* on hover cahnge to FB864D */
+.more-link:hover {
+    color: #FB864D;
+}
+
+.custom-footer {
+    background-color: #1A1A1B;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+.apply {
+    margin-right: 10px !important;
+}
+
+
+
+
+
